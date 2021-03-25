@@ -1,6 +1,7 @@
 import javax.swing.*;  
 import java.awt.event.*;  
-public class EmailGeneration extends JFrame implements ActionListener{  
+public class EmailGeneration extends JFrame implements ActionListener{ 
+    String name;
     JLabel l,m,n;  
     JTextField a,c;
     JCheckBox cb1,cb2,cb3,cb4;  
@@ -60,6 +61,7 @@ public class EmailGeneration extends JFrame implements ActionListener{
         String msg="";
         String pass="";
         String em="";  
+        name = a.getText() + " " + c.getText();
         if(cb1.isSelected()){  
             msg="You are in ";  
             department="Sales";
@@ -85,8 +87,8 @@ public class EmailGeneration extends JFrame implements ActionListener{
             pass=randomPassword();
             em=randomEmail();
         }  
-
-        JOptionPane.showMessageDialog(this,msg+department+"\nPassword : "+pass+"\nEmail : "+em);
+        ImageIcon icon = new ImageIcon("RichaMaamZindabad.png");
+        JOptionPane.showMessageDialog(this,msg+department+ "\nName: " +name + "\nPassword : "+pass+"\nEmail : "+em, "JAVA MINI PROJECT", JOptionPane.INFORMATION_MESSAGE, icon);
     }  
 
     public String randomPassword()
@@ -104,7 +106,7 @@ public class EmailGeneration extends JFrame implements ActionListener{
     public String randomEmail()
     {
         String email;
-        email=department.toLowerCase()+"."+companysuffix;
+        email=a.getText().toLowerCase()+"."+c.getText().toLowerCase()+"@"+department.toLowerCase()+"."+companysuffix;
         return email;
     }
     public static void main(String[] args) {  
